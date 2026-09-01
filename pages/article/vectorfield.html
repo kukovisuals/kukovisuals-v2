@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vector Field — Kuko Visuals</title>
+  </head>
+  <body>
+    <main>
+      <p><a href="/pages/study.html">← Back</a></p>
+      <h1>Vector Field</h1>
+      <p>Description goes here.</p>
+
+      <img src="/pages/article/vectorfield-wide.webp" alt="Vector field mind map" />
+
+      <h2>Goal</h2>
+      <p>
+        Our goal is to practice these tools so we learn them — it's not about learning a whole
+        shader, but about learning tools we can use later, hopefully giving us a better learning
+        style.
+      </p>
+
+      <p>
+        Playing with the buffers, since it's the most important thing in flow fields, we need to
+        know how they work. Here is a simple setup to create a circle and read the same buffer,
+        also called ping pong. What we're going to do is add some simple additive to the texture
+        as vec2(1).
+      </p>
+
+      <p><a href="https://www.shadertoy.com/view/sfGXWz">Shader code</a></p>
+
+      <h2>Image tab</h2>
+      <pre><code><span class="kw">void</span> mainImage(<span class="kw">out</span> <span class="kw">vec4</span> O, <span class="kw">vec2</span> I )
+{
+    O = texture(iChannel0, I/iResolution.xy);
+}</code></pre>
+
+      <p>
+        Then this is our Buffer A setup: a circle that simply moves with the texture so we can
+        see how it works and how the circle leaves a trail as the texture moves.
+      </p>
+
+      <h2>Buffer A</h2>
+      <pre><code><span class="kw">void</span> mainImage( <span class="kw">out</span> <span class="kw">vec4</span> O, <span class="kw">in</span> <span class="kw">vec2</span> I )
+{
+    <span class="kw">vec2</span> R = iResolution.xy;
+    <span class="kw">vec2</span> mv = <span class="kw">vec2</span>(5);
+
+    O = texelFetch(iChannel0, <span class="kw">ivec2</span>( (I - mv) -0.5) ,0) *.99;
+
+    <span class="kw">float</span> d =length(( (I-R*0.5)) );
+    O.xy += smoothstep(50.,0.,d);
+
+    <span class="kw">if</span>(iFrame &lt; 1) O = <span class="kw">vec4</span>(0);
+}</code></pre>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

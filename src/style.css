@@ -26,3 +26,15 @@ nav a {
   border: 1px solid;
   text-align: center;
 }
+
+img {
+  max-width: 100%;
+}
+
+pre {
+  overflow-x: auto;
+}
+
+.kw {
+  color: dodgerblue;
+}
