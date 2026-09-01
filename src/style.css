@@ -1,0 +1,28 @@
+body {
+  background-color: #3c3c3c;
+  color: #e1e1e1;
+}
+
+a {
+  text-decoration: none;
+  color: #e1e1e1;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+nav a {
+  flex: 1 1 12rem;
+  padding: 1rem;
+  border: 1px solid;
+  text-align: center;
+}
