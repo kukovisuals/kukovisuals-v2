@@ -5,7 +5,7 @@ Vanilla JS site built with Vite. Static, no framework.
 ## Structure
 
 - `index.html` — home: title, paragraph, two link boxes
-- `study.html` — case studies page
+- `pages/study.html` — case studies page
 - `src/main.js` — imports the stylesheet
 - `src/style.css` — all styles
 
